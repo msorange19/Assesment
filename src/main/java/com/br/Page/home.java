@@ -105,11 +105,11 @@ public class home {
         BtnAccept.click();
     }
 
-    public void setCatList() {
+    public void setCatList(String Expected) {
         actions = new AndroidTouchAction((PerformsTouchActions) driver);
         actions.tap(ElementOption.element((WebElement) CatList)).perform();
         scroll_right();
-        String Expected = "Electronics";
+
         for (WebElement CatName : CatList) {
             if (CatName.getText().equalsIgnoreCase(Expected)) {
                 CatName.click();
@@ -133,13 +133,24 @@ public class home {
 
     }
 
-    public void descrptionPage() {
-        for (int i = 0; i <= 1; i++) {
+    public void descrptionPage(int m) {
+
+        for (int i = 1; i <= m; i++) {
             QtyPLUS.click();
         }
-        Size.click();
-        SizeList.click();
 
+
+
+    }
+
+    public void SelectSize(String string)
+    {
+        Size.click();
+        if(SizeList.getText().contains(string))
+        {
+
+            SizeList.click();
+        }
 
     }
   public void AddCart()

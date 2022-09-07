@@ -22,22 +22,24 @@ public class search extends TestBase {
         initialization();
         Home = new home();
     }
-    @When("Mike click {string} from our categories list from home page")
-    public void mike_click_from_our_categories_list_from_home_page(String string) {
+    @When("^Mike click \"(.*)\"$ from our categories list from home page")
+    public void mike_click_from_our_categories_list_from_home_page(String Catname) {
        Home.VerifyAccept();
-       Home.setCatList();
+       Home.setCatList(Catname);
     }
-    @When("Mike click to {string} product details page")
+    @When("^ Mike click to \"(.*)\"$ product details page")
     public void mike_click_to_product_details_page(String string) {
         Home.detailsPage();
     }
-    @Then("Mike select size {string} from product details page")
-    public void mike_select_size_from_product_details_page(String string) {
-        Home.detailsPage();
+    @Then("^ Mike select size \"(.*)\"$ from product details page")
+    public void mike_select_size_from_product_details_page(String size) {
+
+        Home.SelectSize(size);
     }
-    @Then("Mike click plus button to increase Qty by {string}")
-    public void mike_click_plus_button_to_increase_qty_by(String string) {
-        Home.detailsPage();
+    @Then("^ Mike click plus button to increase Qty by \"(.*)\"$")
+    public void mike_click_plus_button_to_increase_qty_by(int j) {
+        j=2;
+        Home.descrptionPage(j);
     }
     @Then("Mike click add to cart button to add the product in his cart")
     public void mike_click_add_to_cart_button_to_add_the_product_in_his_cart() {
